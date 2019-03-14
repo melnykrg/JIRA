@@ -20,9 +20,9 @@ class Jira():
         self.user_name = credential["jira"]["username"]
         self.user_pass = credential["jira"]['password']
         self.jira_filter = self.jira.search_issues(
-    'project="PLATOPSCWS: Platform Operations" and reporter=nagios and resolution=Unresolved', maxResults=1000)
+    'project="TEAMNAME: Platform Operations" and reporter=nagios and resolution=Unresolved', maxResults=1000)
         self.jira_filter_for_not_updated = self.jira.search_issues(
-    'project = PLATOPSCWS AND resolution = Unresolved AND updated <= -1w AND assignee in (nagios)', maxResults=1000)
+    'project = TEAMNAME AND resolution = Unresolved AND updated <= -1w AND assignee in (nagios)', maxResults=1000)
 
     def assign_and_investigate(self, issue):
         url = 'https://jira.test.com/rest/api/2/issue/%s/transitions' % issue.key
